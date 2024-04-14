@@ -48,8 +48,6 @@ def split_text_into_pieces(text,
 
 def recursive_summarize(text, max_length=500, recursionLevel=0):
     recursionLevel = recursionLevel+1
-    print("######### Recursion level: ",
-          recursionLevel, "\n\n######### ")
     tokens = tokenizer.tokenize(text)
     expectedCountOfChunks = len(tokens)/max_length
     max_length = int(len(tokens)/expectedCountOfChunks)+2
@@ -57,19 +55,13 @@ def recursive_summarize(text, max_length=500, recursionLevel=0):
     # Break the text into pieces of max_length
     pieces = split_text_into_pieces(text, max_tokens=max_length)
 
-    print("Number of pieces: ", len(pieces))
     # Summarize each piece
     summaries = []
     k = 0
     for k in range(0, len(pieces)):
         piece = pieces[k]
-        print("****************************************************")
-        print("Piece:", (k+1), " out of ", len(pieces), "pieces")
-        print(piece, "\n")
         summary = summarize(piece, maxSummarylength=max_length/3*2)
-        print("SUMNMARY: ", summary)
         summaries.append(summary)
-        print("****************************************************")
 
     concatenated_summary = ' '.join(summaries)
 
@@ -77,7 +69,6 @@ def recursive_summarize(text, max_length=500, recursionLevel=0):
 
     if len(tokens) > max_length:
         # If the concatenated_summary is too long, repeat the process
-        print("############# GOING RECURSIVE ##############")
         return recursive_summarize(concatenated_summary,
                                    max_length=max_length,
                                    recursionLevel=recursionLevel)
@@ -90,8 +81,8 @@ def recursive_summarize(text, max_length=500, recursionLevel=0):
         return final_summary
 
 
-def read_pdf(file_name):
+def read_pdf(file_name, max_length):
     with open(file_name, 'rb') as file:
         text = extract_text(file)
     print("done extracting text")
-    return recursive_summarize(text=text)
+    return recursive_summarize(text=text, max_length=max_length)

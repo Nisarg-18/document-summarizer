@@ -1,8 +1,14 @@
+import Home from "./components/Home";
+import Navbar from "./components/NavBar";
+
 function App() {
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <>
+      <div className="flex flex-col h-screen">
+        <Navbar></Navbar>
+        <Home></Home>
+      </div>
+    </>
   );
 }
 
