@@ -1,1 +1,4 @@
-Flask
+flask
+PyPDF2
+pdfminer
+pdfminer.six
