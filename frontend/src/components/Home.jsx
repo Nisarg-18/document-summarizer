@@ -36,7 +36,7 @@ const Home = () => {
       formData.append("max_length", wordLength);
 
       const response = await axios.post(
-        "http://127.0.0.1:8080/upload-document",
+        "https://3.95.176.228:5000/upload-document/",
         formData,
         {
           headers: {

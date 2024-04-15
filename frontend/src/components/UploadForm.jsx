@@ -23,7 +23,7 @@ const UploadForm = ({
         htmlFor="wordLength"
         className="block text-gray-700 text-sm font-bold mb-2"
       >
-        Word Length of Summary:
+        Maximum Word Length of Summary (Minimum 100 is required):
       </label>
       <input
         type="number"

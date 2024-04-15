@@ -1,5 +1,5 @@
 from flask import jsonify, Blueprint, request
-from controllers import get_home, upload
+from controllers import get_home, upload, health_check
 from werkzeug.utils import secure_filename
 import os
 
@@ -13,6 +13,11 @@ ALLOWED_EXTENSIONS = {'pdf'}
 @routes.route('/', methods=['GET'])
 def home():
     return jsonify(get_home()), 200
+
+
+@routes.route('/health', methods=['GET'])
+def health():
+    return jsonify(health_check()), 200
 
 
 def allowed_file(filename):
