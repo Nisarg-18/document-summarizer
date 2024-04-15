@@ -5,3 +5,4 @@ pdfminer.six==20231228
 transformers==4.38.1
 Werkzeug==3.0.2
 Gunicorn
+torch
