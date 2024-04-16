@@ -36,7 +36,7 @@ const Home = () => {
       formData.append("max_length", wordLength);
 
       const response = await axios.post(
-        "https://3.95.176.228:5000/upload-document/",
+        "http://localhost:8080/upload-document",
         formData,
         {
           headers: {
@@ -65,7 +65,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex-1 flex">
+    <div className="flex flex-col lg:flex-row h-screen">
       <UploadForm
         handleFileChange={handleFileChange}
         handleWordLengthChange={handleWordLengthChange}
